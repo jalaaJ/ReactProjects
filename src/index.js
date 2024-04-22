@@ -59,17 +59,37 @@ function App() {
 
 function Header() {
   return (
-    <h1 style={{ color: "red", fontSize: "48px" }}>Fast React Pizza Co.</h1>
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
   );
 }
 
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our menu</h2>
-      <Pizza />
-      <Pizza />
-    </div>
+
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
+    </main>
+  );
+}
+
+// Function component
+function Pizza(props) {
+  return (
+    <li className="pizza">
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <div>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price}$</span>
+      </div>
+    </li>
   );
 }
 
@@ -78,18 +98,15 @@ function Footer() {
   const openHour = 10;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
-  return <footer> We're currently open!</footer>;
-}
-
-// Function component
-function Pizza() {
   return (
-    <div>
-      <img src="pizzas/prosciutto.jpg" alt="Pizza prosciutto" />
-      <h2>Pizza Prosciutto</h2>
-      <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
-    </div>
+    <footer className="footer">
+      {isOpen && (
+        <div className="order">
+          <p>We're open until {closeHour}:00. Come visit, or order online!</p>
+          <button className="btn">Order</button>
+        </div>
+      )}
+    </footer>
   );
 }
 
