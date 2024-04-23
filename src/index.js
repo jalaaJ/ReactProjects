@@ -86,14 +86,14 @@ function Menu() {
 }
 
 // Function component
-function Pizza(props) {
+function Pizza({ pizzaObj }) {
   return (
     <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}$</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}$</span>
       </div>
     </li>
   );
@@ -110,19 +110,20 @@ function Footer() {
         <Order closingHour={closeHour} />
       ) : (
         <p>
-          We're happy to welcome you between {openHour}:00 and {closeHour}:00,
-          enjoy your day!
+          We're happy to welcome you between {openHour}:00 AM and {closeHour}
+          :00 PM, enjoy your day!
         </p>
       )}
     </footer>
   );
 }
 
-function Order(props) {
+function Order({ closingHour }) {
   return (
     <div className="order">
       <p>
-        We're open until {props.closingHour}:00. Come visit, or order online!
+        We're open until {closingHour.closeHour}:00. Come visit, or order
+        online!
       </p>
       <button className="btn">Order</button>
     </div>
