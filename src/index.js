@@ -121,10 +121,7 @@ function Footer() {
 function Order({ closingHour }) {
   return (
     <div className="order">
-      <p>
-        We're open until {closingHour.closeHour}:00. Come visit, or order
-        online!
-      </p>
+      <p>We're open until {closingHour}:00 PM. Come visit, or order online!</p>
       <button className="btn">Order</button>
     </div>
   );
